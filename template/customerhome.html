@@ -1,0 +1,65 @@
+{% extends 'customerbase.html' %}
+{% block content %}
+<style>
+th,td{
+    padding: 10px;
+}
+</style>
+<center>
+<div style="margin: 50px;">
+    <h3>Welcome</h3>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table>
+            {% for d in data %}
+            <tr>
+                <td>RTO</td>
+                <td><input type="text"  class="form-control" value="{{d.11}}" name="rto" readonly></td>
+            </tr>
+            <tr>
+                <td>Vehicle number</td>
+                <td><input type="text" pattern="[K][L][-][0-9]{2}[-][A-Z]{2}[-][0-9]{1,4}" class="form-control" name="txtNumber" value="{{d.2}}" readonly></td>
+            </tr>
+            <tr>
+                <td>Chasis number</td>
+                <td><input type="text" class="form-control" value="{{d.3}}" name="txtChasis" readonly></td>
+            </tr>
+            <tr>
+                <td>Manufacturer</td>
+                <td><input type="text" class="form-control" value="{{d.4}}" name="txtManu" readonly></td>
+            </tr>
+            <tr>
+                <td>RC owner name</td>
+                <td><input type="text" class="form-control" name="txtName" value="{{d.5}}" pattern="[a-zA-Z ]+" readonly></td>
+            </tr>
+            <tr>
+                <td>Address of RC owner</td>
+                <td><input type="text" class="form-control" name="txtAddress" value="{{d.6}}" readonly></td>
+            </tr>
+            <tr>
+                <td>Contact</td>
+                <td><input type="text" class="form-control" name="txtContact" value="{{d.7}}" pattern="[6789]{0-9]{9}" readonly></td>
+            </tr>
+            <tr>
+                <td>Insurance company</td>
+                <td><input type="text" class="form-control" name="txtIns" value="{{d.12}}" readonly></td>
+            </tr>
+            <tr>
+                <td>Insurance upto</td>
+                <td><input type="text" class="form-control" name="txtInsDate" value="{{d.8}}"  readonly></td>
+            </tr>
+            <tr>
+                <td>Pollution upto</td>
+                <td><input type="text" class="form-control" name="txtPolDate" value="{{d.9}}" readonly></td>
+            </tr>
+           {% endfor %}
+        </table>
+    </form>
+</div>
+</center>
+<script>
+    var msg="{{msg}}";
+    if(msg!="")
+        alert(msg);
+</script>
+{% endblock %}

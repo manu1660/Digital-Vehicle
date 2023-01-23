@@ -1,0 +1,76 @@
+{% extends 'policebase.html' %}
+{% block content %}
+<style>
+th,td{
+    padding: 10px;
+}
+</style>
+<center>
+<div style="margin: 50px;">
+    <h3>Case Status</h3>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td>Vehicle number</td>
+                <td><input type="text" pattern="[K][L][-][0-9]{2}[-][A-Z]{1-2}[-][0-9]{1,4}" class="form-control" name="txtNumber" id="txtNumber" required></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" class="btn btn-dark" name="btnSubmit" value="Search"  ></td>
+            </tr>
+        </table>
+    </form>
+    {% if data %}
+    <table border="1">
+    <tr>
+      
+        <th>CASE NO</th>
+        <th>CASE</th>
+        <th>FINE</th>
+        <th>DATE</th>
+        <th>STATUS</th>
+     
+    </tr>
+    {% for d in data %}
+    <tr>
+      
+        <td>{{d.0}}</td>
+        <td>{{d.2}}</td>
+        <td>{{d.3}}</td>  
+        <td>{{d.5}}</td>  
+        <td>{{d.6}}</td>    
+            
+    </tr>
+    {% endfor %}
+    </table>
+    {% if dates %}
+    <table>
+        {% for d in dates %}
+        <tr>
+            <td>Insurance expiry:</td>
+            <td>{{d.0}}</td>
+        </tr>
+        <tr>
+            <td>Pollution expiry:</td>
+            <td>{{d.1}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+    {% endif %}
+</div>
+</center>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+<script>
+    
+
+      
+    var msg="{{msg}}";
+    if(msg!="")
+    {
+        alert(msg);
+       
+    }
+    </script>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'pollutionbase.html' %}
+{% block content %}
+<style>
+th,td{
+    padding: 10px;
+}
+</style>
+<center>
+<div style="margin: 50px;">
+    <h3>Pollution Details</h3>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table>
+            {% for d in data %}
+            <tr>
+                <td>Vehicle number</td>
+                <td>{{d.0}}</td>
+            </tr>
+            <tr>
+                <td>Chasis number</td>
+                <td>{{d.1}}</td>
+            </tr>
+            
+            <tr>
+                <td>Insurance from</td>
+                <td>{{tdate}} to {{d.2}}</td>
+            </tr>
+            <tr>
+                <td>Pollution agent</td>
+                <td>{{insname}}</td>
+            </tr>
+            <tr>
+                <td>Pollution amount</td>
+                <td>Rs. {{d.3}}</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><img src="../static{{d.4}}" height="250px" width="350px"></td>
+            </tr>
+           {% endfor %}
+           <tr><td><input type="submit" onclick="javascript:window.print();" value="PRINT"></td></tr>
+        </table>
+    </form>
+</div>
+</center>
+<script>
+    var msg="{{msg}}";
+    if(msg!="")
+        alert(msg);
+</script>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'commonbase.html' %}
+{% block content %}
+<style>
+th,td{
+    padding: 10px;
+}
+</style>
+<center>
+<div style="margin: 50px;">
+    <h3>Police Registration</h3>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td>Name</td>
+                <td><input type="text" class="form-control" pattern="[a-zA-Z ]+" name="txtName" required></td>
+            </tr>
+            <tr>
+                <td>Station</td>
+                <td><input type="text" class="form-control" name="txtStation" pattern="[a-zA-Z ]+" required></td>
+            </tr>
+            <tr>
+                <td>Contact</td>
+                <td><input type="text" class="form-control" name="txtContact" pattern="[6789][0-9]{9}" required></td>
+            </tr>
+            <tr>
+                <td>Aadhar number</td>
+                <td><input type="text" class="form-control" name="txtAadhar" pattern="[0-9]{12}" required></td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td><input type="email" class="form-control" name="txtEmail" required></td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td><input type="password" class="form-control" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" name="txtPassword" required></td>
+            </tr>
+            <tr>
+                <td>Upload image</td>
+                <td><input type="file" class="form-control" name="txtFile" required></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" class="btn btn-dark" value="Register"></td>
+            </tr>
+        </table>
+    </form>
+</div>
+</center>
+<script>
+    var msg="{{msg}}";
+    if(msg!="")
+        alert(msg);
+</script>
+{% endblock %}

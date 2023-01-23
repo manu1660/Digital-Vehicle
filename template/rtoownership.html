@@ -1,0 +1,60 @@
+{% extends 'rtobase.html' %}
+{% block content %}
+<style>
+th,td{
+    padding: 10px;
+}
+</style>
+<center>
+<div style="margin: 50px;">
+    <h3>Vehicle Registration</h3>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td>Vehicle number</td>
+                <td><input type="text" pattern="[K][L][-][0-9]{2}[-][A-Z]{2}[-][0-9]{1,4}" class="form-control" name="txtNumber"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" class="btn btn-dark" value="Search" name="search"></td>
+            </tr>
+        </table>
+        {% if data %}
+        <table>
+            {%for d in data%}
+            <tr>
+                <td>Vehicle number</td>
+                <td><input type="text" class="form-control" value="{{d.2}}" name="txtNumber" pattern="[K][L][-][0-9]{2}[-][A-Z]{1}[-][0-9]{1,4}" required></td>
+            </tr>
+            <tr>
+                <td>RC owner name</td>
+                <td><input type="text" class="form-control" value="{{d.5}}" name="txtName" pattern="[a-zA-Z ]+" required></td>
+            </tr>
+            <tr>
+                <td>Address of RC owner</td>
+                <td><input type="text" class="form-control" value="{{d.6}}" name="txtAddress" required></td>
+            </tr>
+            <tr>
+                <td>Contact</td>
+                <td><input type="text" class="form-control" value="{{d.7}}" name="txtContact" pattern="[6789][0-9]{9}" required></td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <td></td>
+                <td><input type="submit" class="btn btn-dark" value="Update" name="update"></td>
+            </tr>            
+        </table>
+        {% endif %}
+    </form>
+    
+  
+  
+</div>
+</center>
+<script>
+    var msg="{{msg}}";
+    if(msg!="")
+        alert(msg);
+</script>
+{% endblock %}

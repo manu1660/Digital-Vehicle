@@ -1,0 +1,59 @@
+{% extends 'rtobase.html' %}
+{% block content %}
+<style>
+th,td{
+    padding: 10px;
+}
+</style>
+<center>
+<div style="margin: 50px;">
+    <h3>Vehicle Registration</h3>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td>Vehicle number</td>
+                <td><input type="text" pattern="[K][L][-][0-9]{2}[-][A-Z]{1-2}[-][0-9]{1,4}" class="form-control" name="txtNumber" required></td>
+            </tr>
+            <tr>
+                <td>Chasis number</td>
+                <td><input type="text" class="form-control" name="txtChasis" required></td>
+            </tr>
+            <tr>
+                <td>Manufacturer</td>
+                <td><input type="text" class="form-control" name="txtManu" required></td>
+            </tr>
+            <tr>
+                <td>RC owner name</td>
+                <td><input type="text" class="form-control" name="txtName" pattern="[a-zA-Z ]+" required></td>
+            </tr>
+            <tr>
+                <td>Address of RC owner</td>
+                <td><input type="text" class="form-control" name="txtAddress" required></td>
+            </tr>
+            <tr>
+                <td>Contact</td>
+                <td><input type="text" class="form-control" name="txtContact" pattern="[6789][0-9]{9}" required></td>
+            </tr>
+            <tr>
+                <td>Insurance company</td>
+                <td><select name="ins" class="form-control">
+                    {% for i in ins %}
+                    <option value="{{i.0}}" >{{i.1}}</option>
+                    {% endfor %}
+                </select></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" class="btn btn-dark" value="Register"></td>
+            </tr>
+        </table>
+    </form>
+</div>
+</center>
+<script>
+    var msg="{{msg}}";
+    if(msg!="")
+        alert(msg);
+</script>
+{% endblock %}

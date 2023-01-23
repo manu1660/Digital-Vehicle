@@ -1,0 +1,44 @@
+{% extends 'adminbase.html' %}
+{% block content %}
+<style>
+    th,td{
+        padding: 10px;
+    }
+    th{
+        background-color:steelblue;
+        color: white;
+    }
+    </style>
+    <div style="margin: 50px;">
+        <h1 style="margin: 10px;">POLICE</h1>
+        <table border="1" style="margin-top: 50px;">
+        <tr>
+            <th>NAME</th>
+            <th>STATION</th>
+            <th>EMAIL</th>
+            <th>AADHAR</th>
+            <th>PHOTO</th>
+            <th colspan="3">CONTACT</th>
+        </tr>
+        {% for d in data %}
+        <tr>
+            <td>{{d.1}}</td>
+            <td>{{d.2}}</td>
+            <td>{{d.3}}</td>
+            <td>{{d.5}}</td> 
+            <td><img src="../static{{d.6}}" height="100px" width="100px"></td> 
+            <td>{{d.4}}</td>         
+            {% if d.7 == "0" %}
+                <td><a href="/adminupdateuser?id={{d.3}}&status=1&url=adminpolice">Approve</a></td>
+                <td><a href="/adminupdateuser?id={{d.3}}&status=-1&url=adminpolice">Reject</a></td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+        </table>
+    </div>
+    <script>
+        var msg="{{msg}}";
+        if(msg!="")
+            alert(msg)
+        </script>
+{% endblock %}

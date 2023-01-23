@@ -1,0 +1,36 @@
+{% extends 'adminbase.html' %}
+{% block content %}
+<style>
+    th,td{
+        padding: 10px;
+    }
+    th{
+        background-color:steelblue;
+        color: white;
+    }
+    </style>
+    <div style="margin: 50px;">
+        <h1 style="margin: 10px;">FEEDBACK</h1>
+        <table border="1" style="margin-top: 50px;">
+        <tr>
+            <th>DATE</th>
+            <th>NAME</th>
+            
+            <th>FEEDBACK</th>
+           
+        </tr>
+        {% for d in data %}
+        <tr>
+            <td>{{d.1}}</td>
+            <td>{{d.4}}</td>
+            <td>{{d.3}}</td>
+        </tr>
+        {% endfor %}
+        </table>
+    </div>
+    <script>
+        var msg="{{msg}}";
+        if(msg!="")
+            alert(msg)
+        </script>
+{% endblock %}

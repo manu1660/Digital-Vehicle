@@ -1,0 +1,68 @@
+{% extends 'policebase.html' %}
+{% block content %}
+<style>
+th,td{
+    padding: 10px;
+}
+</style>
+<center>
+<div style="margin: 50px;">
+    <h3>Case</h3>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table>
+            
+            <tr>
+                <td>Vehicle number</td>
+                <td><input type="text" pattern="[K][L][-][0-9]{2}[-][A-Z]{1-2}[-][0-9]{1,4}" class="form-control" name="txtNumber" id="txtNumber" required></td>
+            </tr>
+            <tr>
+                <td>Case details</td>
+                <td><input type="text" class="form-control" name="txtCase" required>
+                </td>
+            </tr>
+            <tr>
+                <td>Fine amount</td>
+                <td><input type="text" class="form-control" name="txtFine" required>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" class="btn btn-dark" name="btnSubmit" value="Add Case"  ></td>
+            </tr>
+            
+        </table>
+    </form>
+</div>
+</center>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+<script>
+    
+    $(document).ready(function(){
+        $("#txtNumber").change(function(){
+            var y=$("#txtNumber").val()
+            $.ajax({
+                url: "/findvehicle?no="+y,
+                type:'GET',
+                success: function(data) 
+                { 
+                    // alert(data);
+                    var count=data;
+                    if(count==0)
+                    {
+                        alert("Vehicle number not found");
+                        document.getElementById("txtNumber").value="";
+                    }
+                    
+                }
+            });
+        });
+    });
+    var msg="{{msg}}";
+    if(msg!="")
+    {
+        alert(msg);
+       
+    }
+    </script>
+{% endblock %}

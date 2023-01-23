@@ -1,0 +1,121 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Digital Vehicle</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="MTJ Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+	SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- Custom Theme files -->
+<link href="../static/css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+<link href="../static/css/style.css" type="text/css" rel="stylesheet" media="all">  
+<link href="../static/css/font-awesome.css" rel="stylesheet">   <!-- font-awesome icons --> 
+<link rel="stylesheet" href="../static/css/flexslider.css" type="text/css" media="screen" /> 
+<link rel="stylesheet" href="../static/css/lightbox.css">  <!-- light-box -->
+<!-- //Custom Theme files -->    
+<!-- web-fonts -->    
+<link href="//fonts.googleapis.com/css?family=Tulpen+One" rel="stylesheet">
+<link href='//fonts.googleapis.com/css?family=Roboto+Condensed:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
+<!-- //web-fonts -->  
+</head>
+<body> 
+	<!-- header -->
+	<div id="home" class="header">
+		<div class="container">
+			<div class="header-nav">
+				<nav class="navbar navbar-default">
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<div class="navbar-header">
+					  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					  </button>
+						<div class="logo">
+							<h1><a class="navbar-brand" href="/"><span>R</span> <span>T</span> <span>O</span><br><i>Digital Vehicle</i></a></h1>
+						</div>
+					</div> 
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+					 <ul class="nav navbar-nav">
+						<li><a href="/pollutionhome">Home</a></li>
+					
+					<li><a href="/pollutionrenew">Renewal</a></li>
+					
+                    <li><a href="/login">Logout</a></li>
+					</div><!-- /.navbar-collapse -->
+				</nav>
+			</div>
+		</div>
+	</div>
+	<!-- //header -->
+	{% block content %}
+	{% endblock %}
+	
+
+	
+	<!-- //contact -->
+	<!-- modal-about -->
+
+	<!-- //modal-about -->     
+	<!-- js --> 
+	<script src="../static/js/jquery-2.2.3.min.js"></script>
+	<!-- FlexSlider --> 
+	<script defer src="../static/js/jquery.flexslider.js"></script>
+	<script type="text/javascript">
+		$(window).load(function(){
+		  $('.flexslider').flexslider({
+			animation: "slide",
+			start: function(slider){
+			  $('body').removeClass('loading');
+			}
+		  });
+		});
+	</script>
+	<!-- End-slider-script -->
+	<script src="../static/js/SmoothScroll.min.js"></script> 
+	<!-- start-smooth-scrolling -->
+	<script type="text/javascript" src="../static/js/move-top.js"></script>
+	<script type="text/javascript" src="../static/js/easing.js"></script>	
+	<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				$(".scroll").click(function(event){		
+					event.preventDefault();
+			
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+				});
+			});
+	</script>
+	<!-- //end-smooth-scrolling -->	
+	<!-- smooth-scrolling-of-move-up -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+			var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+			};
+			*/
+			
+			$().UItoTop({ easingType: 'easeOutQuart' });
+			
+		});
+	</script>
+	<!-- //smooth-scrolling-of-move-up -->  
+	<script src="../static/js/bars.js"></script> 
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../static/js/bootstrap.js"></script>
+</body>
+</html>

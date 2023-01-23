@@ -1,0 +1,72 @@
+{% extends 'insurancebase.html' %}
+{% block content %}
+<style>
+th,td{
+    padding: 10px;
+}
+</style>
+<center>
+<div style="margin: 50px;">
+    <h3>Renewal</h3>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table>
+            
+            <tr>
+                <td>Vehicle number</td>
+                <td><input type="text" pattern="[K][L][-][0-9]{2}[-][A-Z]{1-2}[-][0-9]{1,4}" class="form-control" name="txtNumber" id="txtNumber"></td>
+            </tr>
+            <tr>
+                <td>Insurance upto</td>
+                <td><input type="text" class="form-control" name="txtInsDate" id="txtDate"   readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>Upload photo</td>
+                <td><input type="file" class="form-control" name="txtFile" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" class="btn btn-dark" name="btnSubmit" value="Renew Insurance"  ></td>
+            </tr>
+            
+        </table>
+    </form>
+</div>
+</center>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+<script>
+    
+    $(document).ready(function(){
+        $("#txtNumber").change(function(){
+            var y=$("#txtNumber").val()
+            $.ajax({
+                url: "/getinsurance?no="+y,
+                type:'GET',
+                success: function(data) 
+                { 
+                    // alert(data);
+                    var edate=data;
+                    if(edate=="Not found")
+                    {
+                        alert("Vehicle number not found");
+                        document.getElementById("txtNumber").value="";
+                    }
+                    else
+                    {
+                        document.getElementById("txtDate").value=data;
+                    }
+                }
+            });
+        });
+    });
+    var msg="{{msg}}";
+    if(msg!="")
+    {
+        alert(msg);
+        if(msg=="Insurance updated")
+            location.href="/insurancedetails";
+    }
+    </script>
+{% endblock %}

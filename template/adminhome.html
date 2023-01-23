@@ -1,0 +1,30 @@
+{% extends 'adminbase.html' %}
+{% block content %}
+<style>
+th,td{
+    padding: 10px;
+}
+</style>
+<center>
+    <div class="welcome">
+		<div class="container"> 
+			<h3 class="w3title-agile">Welcome</h3> 
+			<div class="w3l-welcome-info">
+				<div class="col-sm-6 col-xs-6 welcome-grids">
+					<div class="welcome-img">
+						<img src="images/img1.jpg" class="img-responsive zoom-img" alt="">
+					</div>
+				</div>
+				<div class="col-sm-6 col-xs-6 welcome-grids">
+					<div class="welcome-img">
+						<img src="images/img2.jpg" class="img-responsive zoom-img" alt="">
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="w3l-welcome-text">
+				<p>Digital vehicle is a web application. Nowadays increasing public used vehicle via road. But they are not followed any Rules and Regulation. So this project is used to public vehicle details are stored to database. Police can view and check that details like (Insurance, Pollution and RC Book) and the can enter their punishment also. </p>
+			</div>
+		</div>
+	</div>
+    {% endblock %}
